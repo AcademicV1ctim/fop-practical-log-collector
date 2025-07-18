@@ -8,7 +8,7 @@ export const handleLogin = async (req, res) => {
     return res.status(400).send('Please fill all fields.');
   }
 
-  // const client = await pool.connect();
+  const client = await pool.connect();
 
   try {
     // Check if user exists with given ichat and name
