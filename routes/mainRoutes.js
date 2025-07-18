@@ -11,6 +11,8 @@ import loginRoutes from './loginRoutes.js';
 import verifyRoutes from './verifyRoutes.js';
 import { requireAuth } from '../middleware/auth.js';
 import logoutRoutes from './logoutRoutes.js';
+import userInfoRoutes from './userInfoRoutes.js';
+
 
 
 const router = express.Router();
@@ -31,5 +33,6 @@ router.use('/', signupRoutes);
 router.use('/', loginRoutes);
 router.use('/', verifyRoutes);
 router.use('/', logoutRoutes);
+router.use(userInfoRoutes);
 
 export default router;
