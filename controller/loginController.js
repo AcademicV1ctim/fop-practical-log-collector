@@ -18,7 +18,7 @@ export const handleLogin = async (req, res) => {
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).send('Invalid credentials. Please enter your exact registered name and iChat ID.');
+      return res.status(401).send('This ichat already exist.');
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
