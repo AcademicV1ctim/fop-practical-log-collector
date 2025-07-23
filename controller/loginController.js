@@ -11,12 +11,6 @@ export const handleLogin = async (req, res) => {
   const client = await pool.connect();
 
   try {
-    // Check if ichat already exists in users table
-    const ichatExists = await pool.query('SELECT * FROM users WHERE ichat = $1', [ichat]);
-    if (ichatExists.rows.length > 0) {
-      return res.status(400).send('This ichat is already in use.');
-    }
-
     // Check if user exists with given ichat and name
     const result = await pool.query(
       'SELECT * FROM users WHERE ichat = $1 AND name = $2',
@@ -24,7 +18,7 @@ export const handleLogin = async (req, res) => {
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).send('Invalid credentials. Please try again.');
+      return res.status(401).send('Invalid credentials. Please enter your exact registered name and iChat ID.');
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
