@@ -11,6 +11,12 @@ export const handleLogin = async (req, res) => {
   const client = await pool.connect();
 
   try {
+    // Check if ichat already exists in users table
+    const ichatExists = await pool.query('SELECT * FROM users WHERE ichat = $1', [ichat]);
+    if (ichatExists.rows.length > 0) {
+      return res.status(400).send('This ichat is already in use.');
+    }
+
     // Check if user exists with given ichat and name
     const result = await pool.query(
       'SELECT * FROM users WHERE ichat = $1 AND name = $2',
