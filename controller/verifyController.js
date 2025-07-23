@@ -24,22 +24,12 @@ export const handleOTPVerification = async (req, res) => {
   }
 
   // OTP matches
-  // Check that ichat is still unique
-  const client = await pool.connect();
-  try {
-    const ichatExists = await client.query('SELECT * FROM users WHERE ichat = $1', [sessionData.ichat]);
-    if (ichatExists.rows.length > 0) {
-      return res.status(400).send('This ichat is already in use.');
-    }
-    req.session.user = {
-      id: sessionData.id,
-      name: sessionData.name,
-      ichat: sessionData.ichat
-    };
-    delete req.session.tempLogin;
-    return res.redirect('/dashboard');
-  } finally {
-    client.release();
-  }
+  req.session.user = {
+    id: sessionData.id,
+    name: sessionData.name,
+    ichat: sessionData.ichat
+  };
+  delete req.session.tempLogin;
+  return res.redirect('/dashboard');
 };
 
