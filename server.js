@@ -4,11 +4,18 @@ import { fileURLToPath } from 'url';
 import session from 'express-session';
 import mainRoutes from './routes/mainRoutes.js';
 import { requireAuth, redirectIfAuthenticated } from './middleware/auth.js';
+import cors from 'cors';
 
 const app = express();
 // Add middleware to parse JSON and URL-encoded bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// use cors to send sessiondata
+app.use(cors({
+  origin: 'https://st0523-fop-practicals-master.onrender.com/',
+  credentials: true
+}));
 
 // Session configuration
 app.use(session({
@@ -17,6 +24,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { 
     secure: false, // Set to true if using HTTPS
+    sameSite: 'none',  // allow cross-site cookie
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
   }
 }));
@@ -82,6 +90,15 @@ app.get('/logout', (req, res) => {
   });
 });
 
+//endpoint to retrieve sessiondata
+app.get('/sessionData', (req, res) => {
+  if (req.session?.user) {
+    res.json({ user: req.session.user });
+  } else {
+    res.status(401).json({ error: 'No session found' });
+  }
+});
+
 app.use('/', mainRoutes);
 
 // 404 handler - redirect to login if not authenticated, otherwise to dashboard
@@ -93,7 +110,7 @@ app.use((req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
