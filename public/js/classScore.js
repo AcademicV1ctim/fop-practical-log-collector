@@ -89,13 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 const img = card.querySelector("img");
                 img.src = entry.imgSrc;
                 img.alt = entry.imgAlt;
-            // } else if (card) {
-            //     // Clear if not present (e.g. no 3rd place due to tie at 2nd)
-            //     card.querySelector(".team-name").textContent = "-";
-            //     card.querySelector(".score").textContent = "-";
-            //     const img = card.querySelector("img");
-            //     img.src = "";
-            //     img.alt = "";
+            } else if (card) {
+                // Clear if not present (e.g. no 3rd place due to tie at 2nd)
+                card.querySelector(".team-name").textContent = "-";
+                card.querySelector(".score").textContent = "-";
+                const img = card.querySelector("img");
+                img.src = "";
+                img.alt = "";
             }
         });
 
