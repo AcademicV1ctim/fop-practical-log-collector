@@ -18,7 +18,7 @@ export const handleLogin = async (req, res) => {
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).send('This ichat already exist.');
+      return res.status(401).send('Username or Email is Invalid.');
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
