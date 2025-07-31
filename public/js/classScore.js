@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 rank = 1;
             } else {
                 // Compare score with previous one
-                if (item.total_score === responseData[index - 1].total_score) {
+                if (item.total_class_score === responseData[index - 1].total_class_score) {
                     // Same score -> same rank
                     rank = ranks[index - 1];
                 } else {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             classCell.textContent = item.class;
 
             const scoreCell = document.createElement("td");
-            scoreCell.textContent = item.total_score;
+            scoreCell.textContent = item.total_class_score;
 
             row.appendChild(rankCell);
             row.appendChild(classCell);
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 podiumData.push({
                     class: responseData[i].class,
-                    score: responseData[i].total_score,
+                    score: responseData[i].total_class_score,
                     imgSrc: imageSrc,
                     imgAlt: imageAlt,
                     rank: rank
@@ -91,11 +91,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 img.alt = entry.imgAlt;
             } else if (card) {
                 // Clear if not present (e.g. no 3rd place due to tie at 2nd)
-                card.querySelector(".team-name").textContent = "-";
-                card.querySelector(".score").textContent = "-";
-                const img = card.querySelector("img");
-                img.src = "";
-                img.alt = "";
+                // card.querySelector(".team-name").textContent = "-";
+                // card.querySelector(".score").textContent = "-";
+                // const img = card.querySelector("img");
+                // img.src = "";
+                // img.alt = "";
             }
         });
 

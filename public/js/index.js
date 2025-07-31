@@ -37,10 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/verify-otp';
       } else {
         const errorText = await res.text();
-        if (errorText.includes('ichat is already in use')) {
-          ichatError.textContent = 'This ichat is already in use.';
-        } else {
-          ichatError.textContent = errorText || 'Login failed.';
+        if (errorText.includes('ichat or username is already in use')) {
+          ichatError.textContent = 'This ichat or username is already in use.';
         }
       }
     } catch (err) {
