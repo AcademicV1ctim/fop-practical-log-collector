@@ -12,7 +12,7 @@ import verifyRoutes from './verifyRoutes.js';
 import userInfoRoutes from './userInfoRoutes.js';
 import { generateToken, sendToken, verifyToken } from '../middleware/jwtMiddleware.js';
 import scoreRoutes from './scoreRoutes.js';
-
+import chartRoutes from './chartRoutes.js';
 
 const router = express.Router();
 
@@ -31,5 +31,6 @@ router.use('/attempts', verifyToken, attemptsRoutes);
 router.use('/fastest', verifyToken, fastestRoutes);
 router.use('/', verifyToken, userInfoRoutes);
 router.use('/', verifyToken, scoreRoutes);
+router.use('/',verifyToken, chartRoutes);
 
 export default router;
