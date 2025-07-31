@@ -1,0 +1,771 @@
+{
+  "version": "2.1.0",
+  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.5",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "ESLint",
+          "informationUri": "https://eslint.org",
+          "rules": [
+            {
+              "id": "no-unused-vars",
+              "helpUri": "https://eslint.org/docs/latest/rules/no-unused-vars",
+              "properties": {},
+              "shortDescription": {
+                "text": "Disallow unused variables"
+              }
+            },
+            {
+              "id": "no-undef",
+              "helpUri": "https://eslint.org/docs/latest/rules/no-undef",
+              "properties": {},
+              "shortDescription": {
+                "text": "Disallow the use of undeclared variables unless mentioned in `/*global */` comments"
+              }
+            }
+          ],
+          "version": "9.32.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/attemptsController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/badgesController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/classController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/fastestController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/loginController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/pointsController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/questionsController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/scoreController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/signupController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/usersController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/controller/verifyController.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/database.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/db.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/eslint.config.mjs"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/logger.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/middleware/jwtMiddleware.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/Dashboard.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/LeastAttempts.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/Profile.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/classScore.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/fastestsolve.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/fetchMethod.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/getCurrentURL.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/index.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/signup.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/results.model.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/results.route.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/attemptsRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/badgesRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/classRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/fastestRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/loginRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/mainRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/pointsRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/questionsRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/scoreRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/signupRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/userInfoRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/usersRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/verifyRoutes.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/schedulers/scoreScheduler.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/schema.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/server.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/services/mailService.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/services/scoreSystem.js"
+          }
+        }
+      ],
+      "results": [
+        {
+          "level": "error",
+          "message": {
+            "text": "'express' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 8,
+                  "endLine": 2,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'validate' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 8,
+                  "endLine": 3,
+                  "endColumn": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'createHttpError' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 8,
+                  "endLine": 5,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'cors' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 8,
+                  "endLine": 6,
+                  "endColumn": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'logResult' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 10,
+                  "endLine": 18,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'results' is assigned a value but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 43,
+                  "endLine": 55,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'req' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 55,
+                  "endLine": 55,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'res' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 5,
+                  "endLine": 62,
+                  "endColumn": 8
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'app' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 1,
+                  "endLine": 65,
+                  "endColumn": 4
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'app' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/index.js",
+                  "index": 14
+                },
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 16,
+                  "endLine": 73,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'token' is assigned a value but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/middleware/jwtMiddleware.js",
+                  "index": 16
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 11,
+                  "endLine": 34,
+                  "endColumn": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'next' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/middleware/jwtMiddleware.js",
+                  "index": 16
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 37,
+                  "endLine": 38,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'calculateLeastAttempts' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/LeastAttempts.js",
+                  "index": 18
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 12,
+                  "endLine": 26,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'grouped' is assigned a value but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/LeastAttempts.js",
+                  "index": 18
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 11,
+                  "endLine": 27,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'fetchMethod' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/LeastAttempts.js",
+                  "index": 18
+                },
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 5,
+                  "endLine": 108,
+                  "endColumn": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'fetchMethod' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/classScore.js",
+                  "index": 20
+                },
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 7,
+                  "endLine": 119,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'currentUrl' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/classScore.js",
+                  "index": 20
+                },
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 19,
+                  "endLine": 119,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'fetchMethod' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/fastestsolve.js",
+                  "index": 21
+                },
+                "region": {
+                  "startLine": 112,
+                  "startColumn": 7,
+                  "endLine": 112,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "no-undef",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'fetchMethod' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/public/js/fetchMethod.js",
+                  "index": 22
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10,
+                  "endLine": 1,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'generateToken' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/mainRoutes.js",
+                  "index": 33
+                },
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 10,
+                  "endLine": 13,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'sendToken' is defined but never used."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/admin/Desktop/Personal%20Projects/IHI/fop-practical-log-collector/routes/mainRoutes.js",
+                  "index": 33
+                },
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 25,
+                  "endLine": 13,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "ruleId": "no-unused-vars",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ]
+}
