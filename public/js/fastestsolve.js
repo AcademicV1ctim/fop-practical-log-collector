@@ -102,5 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    fetchMethod("http://localhost:3000/fastest", callbackForFastestSolve);
+    // Get token from localStorage
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      console.warn('No token found, redirecting to login');
+      window.location.href = '/login';
+    } else {
+      fetchMethod("http://localhost:3000/fastest", callbackForFastestSolve, 'GET', null, token);
+    }
 });

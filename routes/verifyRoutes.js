@@ -1,17 +1,13 @@
 import express from 'express';
 import { handleOTPVerification } from '../controller/verifyController.js';
+import { generateToken, sendToken } from '../middleware/jwtMiddleware.js';
 
 const router = express.Router();
 
 router.get('/verify-otp', (req, res) => {
-  if (!req.session.tempLogin) {
-    return res.redirect('/login');
-  }
-
   res.sendFile('otpVerification.html', { root: './views' }); 
 });
 
-
-router.post('/verify-otp', handleOTPVerification);
+router.post('/verify-otp', handleOTPVerification, generateToken, sendToken);
 
 export default router;

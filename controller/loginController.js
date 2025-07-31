@@ -1,11 +1,11 @@
 import pool from '../db.js';
-import { sendOTPEmail } from '../services/mailService.js'; // <-- use the nodemailer function
+import { sendOTPEmail } from '../services/mailService.js';
 
-export const handleLogin = async (req, res) => {
+export const handleLogin = async (req, res, next) => {
   const { name, ichat } = req.body;
 
   if (!name || !ichat) {
-    return res.status(400).send('Please fill all fields.');
+    return res.status(400).json({ error: 'Please fill all fields.' });
   }
 
   const client = await pool.connect();
@@ -18,29 +18,31 @@ export const handleLogin = async (req, res) => {
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).send('Username or Email is Invalid.');
+      return res.status(401).json({ error: 'Username or Email is Invalid.' });
     }
 
+    const user = result.rows[0];
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiry = Date.now() + 5 * 60 * 1000;
+    const expiry = Date.now() + 5 * 60 * 1000; // 5 minutes
 
-    req.session.tempLogin = {
-      id: result.rows[0].id,
-      name: result.rows[0].name,
-      ichat: result.rows[0].ichat,
-      otp,
-      expiry
-    };
+    // Store OTP in database or temporary storage
+    // For now, we'll store it in res.locals for the next middleware
+    res.locals.userId = user.id;
+    res.locals.userName = user.name;
+    res.locals.userIchat = user.ichat;
+    res.locals.otp = otp;
+    res.locals.otpExpiry = expiry;
+    res.locals.message = 'OTP sent successfully';
 
-    // Send OTP (assuming sendOTPEmail is set up)
+    // Send OTP email
     await sendOTPEmail(ichat, otp);
 
-    // Redirect to OTP page
-    return res.redirect('/verify-otp');
+    // Continue to next middleware (generateToken, sendToken)
+    next();
 
   } catch (error) {
     console.error('Login error:', error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).json({ error: 'Internal Server Error' });
   } finally {
     client.release();
   }
