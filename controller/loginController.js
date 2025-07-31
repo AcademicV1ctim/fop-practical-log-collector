@@ -18,7 +18,7 @@ export const handleLogin = async (req, res, next) => {
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).json({ error: 'Username or Email is Invalid.' });
+      return res.status(401).send('Username or Email is Invalid.');
     }
 
     const user = result.rows[0];
