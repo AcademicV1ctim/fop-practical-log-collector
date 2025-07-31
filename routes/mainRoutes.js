@@ -11,7 +11,7 @@ import loginRoutes from './loginRoutes.js';
 import verifyRoutes from './verifyRoutes.js';
 import userInfoRoutes from './userInfoRoutes.js';
 import { generateToken, sendToken, verifyToken } from '../middleware/jwtMiddleware.js';
-
+import scoreRoutes from './scoreRoutes.js';
 
 
 const router = express.Router();
@@ -29,6 +29,7 @@ router.use('/questions', verifyToken, questionsRoutes);
 router.use('/badges', verifyToken, badgesRoutes);
 router.use('/attempts', verifyToken, attemptsRoutes);
 router.use('/fastest', verifyToken, fastestRoutes);
-router.use(userInfoRoutes);
+router.use('/', verifyToken, userInfoRoutes);
+router.use('/', verifyToken, scoreRoutes);
 
 export default router;

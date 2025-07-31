@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import mainRoutes from './routes/mainRoutes.js';
 import { verifyToken } from './middleware/jwtMiddleware.js';
 import cors from 'cors';
+import './schedulers/scoreScheduler.js';
 
 
 const app = express();
