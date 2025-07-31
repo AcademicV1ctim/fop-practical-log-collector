@@ -75,12 +75,57 @@
 <body>
   <div class="container">
     <h2>Sign In</h2>
-    <form action="/verify-otp" method="POST">
-      <input type="text" name="otp" placeholder="Enter OTP" required />
+    <form id="otpForm">
+      <input type="text" name="otp" id="otpInput" placeholder="Enter OTP" required />
       <button type="submit">Verify</button>
     </form>
-
+    <div id="errorMessage" style="color: #d42892; font-size: 14px; margin-top: 10px;"></div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const otpForm = document.getElementById('otpForm');
+      const errorMessage = document.getElementById('errorMessage');
+
+      otpForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorMessage.textContent = '';
+        
+        const otp = document.getElementById('otpInput').value.trim();
+        const userId = localStorage.getItem('tempUserId');
+
+        if (!userId) {
+          errorMessage.textContent = 'Session expired. Please login again.';
+          return;
+        }
+
+        try {
+          const res = await fetch('/verify-otp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ otp, userId })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            // Store the JWT token
+            localStorage.setItem('token', data.token);
+            // Clear temporary userId
+            localStorage.removeItem('tempUserId');
+
+            localStorage.setItem('userId', data.user_id);
+            // Redirect to dashboard
+            window.location.href = '/dashboard';
+          } else {
+            const errorData = await res.json();
+            errorMessage.textContent = errorData.error || 'Verification failed';
+          }
+        } catch (error) {
+          errorMessage.textContent = 'Network error. Please try again.';
+        }
+      });
+    });
+  </script>
 
 
 </body>

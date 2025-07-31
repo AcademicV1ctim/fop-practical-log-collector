@@ -1,11 +1,12 @@
 import express from 'express';
 import pool from '../db.js';
-import { requireAuth } from '../middleware/auth.js';
+import { verifyToken } from '../middleware/jwtMiddleware.js';
 
 const router = express.Router();
 
-router.get('/api/user-info', requireAuth, async (req, res) => {
-  const { id } = req.session.user;
+// GET /api/user-info 
+router.get('/api/user-info', verifyToken, async (req, res) => {
+  const userId = res.locals.userId;
 
   try {
     const result = await pool.query(`
@@ -13,7 +14,7 @@ router.get('/api/user-info', requireAuth, async (req, res) => {
       FROM users
       JOIN class ON users.class_id = class.id
       WHERE users.id = $1
-    `, [id]);
+    `, [userId]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'User not found' });

@@ -1,13 +1,12 @@
 import pool from '../db.js';
 
-export const handleSignup = async (req, res) => {
+export const handleSignup = async (req, res, next) => {
     const { name, ichat, className } = req.body;
 
     if (!name || !ichat || !className) {
-        return res.status(400).send('Please fill all fields.');
+        return res.status(400).json({ error: 'Please fill all fields.' });
     }
 
-    // const client = await pool.connect();
     try {
         // 1. Check if class exists
         const classResult = await pool.query('SELECT id FROM class WHERE class = $1', [className]);
@@ -30,20 +29,15 @@ export const handleSignup = async (req, res) => {
             [name, ichat, classId]
         );
 
-        // 4. Set user session upon successful signup
-        req.session.user = {
-            id: userResult.rows[0].id,
-            name: userResult.rows[0].name,
-            ichat: userResult.rows[0].ichat
-        };
+        // 4. Set user data for JWT generation
+        res.locals.userId = userResult.rows[0].id;
+        res.locals.message = 'Signup successful';
 
-        // 5. Redirect to dashboard
-        res.redirect('/dashboard');
+        // 5. Continue to next middleware (generateToken, sendToken)
+        next();
 
     } catch (error) {
         console.error('Error during signup:', error);
-        res.status(500).send('Internal Server Error');
-    } finally {
-        client.release();
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };

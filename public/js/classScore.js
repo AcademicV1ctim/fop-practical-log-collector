@@ -109,7 +109,15 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    fetchMethod(currentUrl + `/class/rank`, callbackForClassScore);
+    // Get token from localStorage
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      console.warn('No token found, redirecting to login');
+      window.location.href = '/login';
+    } else {
+      fetchMethod(currentUrl + `/class/rank`, callbackForClassScore, 'GET', null, token);
+    }
 });
 
 

@@ -98,17 +98,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  fetch('/attempts/least-attempts')
-    .then(res => res.json())
-    .then(data => {
-      rawData = data;
-      renderTable(topicSelector.value);
-      topicSelector.addEventListener('change', () => {
+  // Get token from localStorage
+  const token = localStorage.getItem('token');
+  
+  if (!token) {
+    console.warn('No token found, redirecting to login');
+    window.location.href = '/login';
+  } else {
+    fetchMethod('/attempts/least-attempts', (status, data) => {
+      if (status === 200) {
+        rawData = data;
         renderTable(topicSelector.value);
-      });
-    })
-    .catch(err => {
-      console.error('Error loading attempts:', err);
-      tableBody.innerHTML = `<tr><td colspan="4">Error loading data</td></tr>`;
-    });
+        topicSelector.addEventListener('change', () => {
+          renderTable(topicSelector.value);
+        });
+      } else if (status === 401) {
+        // Token expired or invalid
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      } else {
+        console.error('Error loading attempts:', data);
+        tableBody.innerHTML = `<tr><td colspan="4">Error loading data</td></tr>`;
+      }
+    }, 'GET', null, token);
+  }
 });
