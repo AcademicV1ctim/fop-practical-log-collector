@@ -13,7 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const container = document.getElementById('line-chart');
     container.innerHTML = `
-      <h2>Weekly Class Ranking</h2>
+    <style>
+        .chart-title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    </style>
+      <h2 class="chart-title">Weekly Class Ranking</h2>
       <canvas id="rankingChart" width="600" height="400"></canvas>
     `;
 
