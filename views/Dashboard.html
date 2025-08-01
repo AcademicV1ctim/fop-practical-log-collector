@@ -85,6 +85,11 @@
       border-radius: 1rem;
       overflow-wrap: break-word;
     }
+
+    .chart-title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 
@@ -275,7 +280,7 @@
             <div class="col-md-6">
               <div id="line-chart">
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <h2>Weekly Class Ranking</h2>
+                <h2 class="chart-title">Weekly Class Ranking</h2>
                 <canvas id="rankingChart" class="w-100 h-auto"></canvas>
               </div>
             </div>
