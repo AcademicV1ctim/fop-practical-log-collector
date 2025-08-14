@@ -75,13 +75,51 @@
 <body>
   <div class="container">
     <h2>Create Account</h2>
-    <form action="/signup" method="POST">
-      <input type="text" name="name" placeholder="Username" required />
-      <input type="email" name="ichat" placeholder="iChat Email" required />
-      <input type="text" name="className" placeholder="Class" required />
+    <form id="signupForm">
+      <input type="text" name="name" id="nameInput" placeholder="Username" required />
+      <input type="email" name="ichat" id="ichatInput" placeholder="iChat Email" required />
+      <input type="text" name="className" id="classNameInput" placeholder="Class" required />
       <button type="submit">Sign Up</button>
     </form>
+    <div id="errorMessage" style="color: #d42892; font-size: 14px; margin-top: 10px;"></div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const signupForm = document.getElementById('signupForm');
+      const errorMessage = document.getElementById('errorMessage');
+
+      signupForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorMessage.textContent = '';
+        
+        const name = document.getElementById('nameInput').value.trim();
+        const ichat = document.getElementById('ichatInput').value.trim();
+        const className = document.getElementById('classNameInput').value.trim();
+
+        try {
+          const res = await fetch('/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, ichat, className })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            // Store the JWT token
+            localStorage.setItem('token', data.token);
+            // Redirect to dashboard
+            window.location.href = '/dashboard';
+          } else {
+            const errorData = await res.json();
+            errorMessage.textContent = errorData.error || 'Signup failed';
+          }
+        } catch (error) {
+          errorMessage.textContent = 'Network error. Please try again.';
+        }
+      });
+    });
+  </script>
 
 
 </body>

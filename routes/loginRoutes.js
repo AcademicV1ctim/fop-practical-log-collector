@@ -1,14 +1,16 @@
 // routes/loginRoutes.js
 import express from 'express';
 import { handleLogin } from '../controller/loginController.js';
-import { redirectIfAuthenticated } from '../middleware/auth.js';
+import { generateToken, sendToken } from '../middleware/jwtMiddleware.js';
 
 const router = express.Router();
 
-router.get('/login', redirectIfAuthenticated, (req, res) => {
-  res.sendFile('login.html', { root: './public' });
+// GET /login 
+router.get('/login', (req, res) => {
+  res.sendFile('login.html', { root: './views' });
 });
+
 // POST /login
-router.post('/login', handleLogin);
+router.post('/login', handleLogin, generateToken, sendToken);
 
 export default router;

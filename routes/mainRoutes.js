@@ -9,30 +9,28 @@ import attemptsRoutes from './attemptsRoutes.js';
 import signupRoutes from './signupRoutes.js';
 import loginRoutes from './loginRoutes.js';
 import verifyRoutes from './verifyRoutes.js';
-import { requireAuth } from '../middleware/auth.js';
-import logoutRoutes from './logoutRoutes.js';
 import userInfoRoutes from './userInfoRoutes.js';
-
-
+import { generateToken, sendToken, verifyToken } from '../middleware/jwtMiddleware.js';
+import scoreRoutes from './scoreRoutes.js';
+import chartRoutes from './chartRoutes.js';
 
 const router = express.Router();
 
-// Mount sub-routes
-router.get('/dashboard', requireAuth, (req, res) => {
-  res.sendFile('dashboard.html', { root: './views' });
-});
-
-router.use('/users', usersRoutes);
-router.use('/points', pointsRoutes);
-router.use('/class', classRoutes);
-router.use('/questions', questionsRoutes);
-router.use('/badges', badgesRoutes);
-router.use('/attempts', attemptsRoutes);
-router.use('/fastest', fastestRoutes);
+// Public routes (no authentication required)
 router.use('/', signupRoutes);
 router.use('/', loginRoutes);
 router.use('/', verifyRoutes);
-router.use('/', logoutRoutes);
-router.use(userInfoRoutes);
+
+// Protected routes (require authentication)
+router.use('/users', verifyToken, usersRoutes);
+router.use('/points', verifyToken, pointsRoutes);
+router.use('/class', verifyToken, classRoutes);
+router.use('/questions', verifyToken, questionsRoutes);
+router.use('/badges', verifyToken, badgesRoutes);
+router.use('/attempts', verifyToken, attemptsRoutes);
+router.use('/fastest', verifyToken, fastestRoutes);
+router.use('/', verifyToken, userInfoRoutes);
+router.use('/', verifyToken, scoreRoutes);
+router.use('/',verifyToken, chartRoutes);
 
 export default router;
