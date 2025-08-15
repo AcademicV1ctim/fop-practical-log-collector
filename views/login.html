@@ -89,6 +89,21 @@
             margin: 10px 0;
             font-size: 15px;
         }
+        .spinner {
+        border: 4px solid #f3f3f3; /* Light grey */
+        border-top: 4px solid #b319d2; /* Purple */
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        animation: spin 0.8s linear infinite;
+        margin: auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
     </style>
 </head>
 
@@ -100,6 +115,10 @@
             <input type="email" name="ichat" id="ichatInput" placeholder="iChat Email" required />
             <div id="ichatError" style="color: #d42892; font-size: 14px; min-height: 18px; margin-bottom: 5px;"></div>
             <button type="submit" class="login-btn">Login</button>
+            <!-- Inside .container, below the login button -->
+            <div id="loadingSpinner" style="display:none; margin-top:15px;">
+                <div class="spinner"></div>
+            </div>
         </form>
 
         <hr class="divider" />
@@ -110,6 +129,7 @@
         </form>
     </div>
     <script src="/js/index.js" type="text/javascript"></script>
+    <script src="/js/login.js" type="text/javascript"></script>
 </body>
 
 </html>
