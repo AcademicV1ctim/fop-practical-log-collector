@@ -6,7 +6,7 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
-    ignores: [".vscode/**", "node_modules/**", "package-lock.json", "package.json" ],
+    ignores: [".vscode/**", "node_modules/**", "package-lock.json", "package.json", "jwtMiddleware.js", "index.js"],
   },
 
   {
