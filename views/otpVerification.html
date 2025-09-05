@@ -69,6 +69,23 @@
     .container button:hover {
       background: #7300bb;
     }
+
+    /* Spinner style */
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #d42892;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      animation: spin 0.8s linear infinite;
+      margin: 15px auto 0;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -77,8 +94,12 @@
     <h2>Sign In</h2>
     <form id="otpForm">
       <input type="text" name="otp" id="otpInput" placeholder="Enter OTP" required />
-      <button type="submit">Verify</button>
+      <button type="submit" id="verifyBtn">Verify</button>
     </form>
+
+    <!-- Spinner -->
+    <div id="loadingSpinner" class="spinner"></div>
+
     <div id="errorMessage" style="color: #d42892; font-size: 14px; margin-top: 10px;"></div>
   </div>
 
@@ -86,11 +107,13 @@
     document.addEventListener('DOMContentLoaded', function () {
       const otpForm = document.getElementById('otpForm');
       const errorMessage = document.getElementById('errorMessage');
+      const spinner = document.getElementById('loadingSpinner');
+      const verifyBtn = document.getElementById('verifyBtn');
 
       otpForm.addEventListener('submit', async function (e) {
         e.preventDefault();
         errorMessage.textContent = '';
-        
+
         const otp = document.getElementById('otpInput').value.trim();
         const userId = localStorage.getItem('tempUserId');
 
@@ -98,6 +121,11 @@
           errorMessage.textContent = 'Session expired. Please login again.';
           return;
         }
+
+        // Show spinner & disable button
+        spinner.style.display = "block";
+        verifyBtn.disabled = true;
+        verifyBtn.textContent = "Verifying...";
 
         try {
           const res = await fetch('/verify-otp', {
@@ -108,13 +136,9 @@
 
           if (res.ok) {
             const data = await res.json();
-            // Store the JWT token
             localStorage.setItem('token', data.token);
-            // Clear temporary userId
             localStorage.removeItem('tempUserId');
-
             localStorage.setItem('userId', data.user_id);
-            // Redirect to dashboard
             window.location.href = '/dashboard';
           } else {
             const errorData = await res.json();
@@ -122,12 +146,15 @@
           }
         } catch (error) {
           errorMessage.textContent = 'Network error. Please try again.';
+        } finally {
+          // Hide spinner & re-enable button if verification failed
+          spinner.style.display = "none";
+          verifyBtn.disabled = false;
+          verifyBtn.textContent = "Verify";
         }
       });
     });
   </script>
-
-
 </body>
 
 </html>
