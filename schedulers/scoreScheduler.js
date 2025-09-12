@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import { updateUserScores } from '../services/scoreSystem.js';
 
-cron.schedule('*/1 * * * *', async () => {
+cron.schedule('*/5 * * * *', async () => {
   try {
     console.log('⏰ Running scheduled score update...');
     await updateUserScores();

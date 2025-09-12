@@ -1,39 +1,34 @@
-// controllers/attemptsController.js
+// controller/attemptsController.js
 import pool from '../db.js';
 
+// GET /attempts/least-attempts/:topic
+// Returns the top users with the lowest TOTAL attempts to complete all questions in the topic
 export const getLeastAttemptsByTopic = async (req, res) => {
-  const client = await pool.connect();
+  const { topic } = req.params;
+
   try {
-    const result = await client.query(`
-      WITH first_correct AS (
-        SELECT
-          a.user_id,
-          a.question_id,
-          q.topic,
-          MIN(a.attempt_number) AS attempts_to_correct
-        FROM attempts a
-        JOIN questions q ON a.question_id = q.id
-        WHERE a.is_correct = TRUE
-        GROUP BY a.user_id, a.question_id, q.topic
-      )
-      SELECT
-        RANK() OVER (PARTITION BY topic ORDER BY SUM(fc.attempts_to_correct)) AS rank,
-        u.name,
-        c.class AS class,
-        fc.topic,
-        SUM(fc.attempts_to_correct) AS least_attempts
-      FROM first_correct fc
-      JOIN users u ON fc.user_id = u.id
-      JOIN class c ON u.class_id = c.id
-      GROUP BY u.name, c.class, fc.topic
-      ORDER BY fc.topic, least_attempts;
-    `);
+    const result = await pool.query(`
+      SELECT 
+        u.name, 
+        c.class,
+        SUM(a.attempt_number) AS total_attempts
+      FROM attempts a
+      JOIN users u   ON a.user_id = u.id
+      JOIN class c   ON u.class_id = c.id
+      JOIN questions q 
+        ON a.question_id = q.qid 
+       AND a.topic_id    = q.tid
+      WHERE a.is_correct = TRUE
+        AND q.topic      = $1         -- dropdown value, e.g. 'Functions'
+        AND q.tid NOT IN (1, 2)       -- your exclusion
+      GROUP BY u.name, c.class
+      ORDER BY total_attempts ASC
+      LIMIT 10;
+    `, [topic]);
 
     res.status(200).json(result.rows);
-  } catch (error) {
-    console.error('Error fetching least attempts:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  } finally {
-    client.release();
+  } catch (err) {
+    console.error('Error fetching least attempts by topic:', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
